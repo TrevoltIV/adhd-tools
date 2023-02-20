@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="styles/popup.css">
+    </head>
+    <body>
+        <div id="root">
+            <div class="popup-wrapper">
+                <div class="popup">
+                    <div class="header">
+                        <div class="points"></div>
+                        <img class="logo" src="images/logo.png" alt="ADHD Tools Logo">
+                        <h1 class="title">ADHD Tools</h1>
+                        <div class="points">
+                            <p class="points-text">Points:</p>
+                            <p id="points-number">1,287</p>
+                        </div>
+                    </div>
+                    <div class="nav">
+                        <div class="nav-row">
+                            <button type="button" class="nav-button" id="nav-button-tasks">Tasks</button>
+                            <button type="button" class="nav-button" id="nav-button-budget">Budget</button>
+                            <button type="button" class="nav-button" id="nav-button-focus">Focus</button>
+                            <button type="button" class="nav-button" id="nav-button-social">Social</button>
+                        </div>
+                        <div class="nav-row">
+                            <button type="button" class="nav-button" id="nav-button-blog">Blog</button>
+                            <button type="button" class="nav-button" id="nav-button-donate">Donate</button>
+                            <button type="button" class="nav-button" id="nav-button-help">Help</button>
+                            <button type="button" class="nav-button" id="nav-button-options">Options</button>
+                        </div>
+                    </div>
+                    <div id="content"></div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="scripts/popup.js"></script>
+    </body>
+</html>

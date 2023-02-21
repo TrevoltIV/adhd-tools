@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!--  This extension was created by Karsten Koerner.  -->
+        <!--  You can reach me by email at: trevoltyt@gmail.com  -->
+        <!--  Or by Discord: Trevolt#5648  -->
         <link rel="stylesheet" href="styles/popup.css">
+        <link rel="stylesheet" href="styles/tasks.css">
+        <link rel="stylesheet" href="styles/budget.css">
+        <link rel="stylesheet" href="styles/focus.css">
+        <link rel="stylesheet" href="styles/social.css">
+        <link rel="stylesheet" href="styles/blog.css">
+        <link rel="stylesheet" href="styles/donate.css">
+        <link rel="stylesheet" href="styles/help.css">
+        <link rel="stylesheet" href="styles/options.css">
     </head>
     <body>
         <div id="root">
             <div class="popup-wrapper">
                 <div class="popup">
                     <div class="header">
-                        <div class="points"></div>
+                        <div class="version">
+                            <p class="version-text">Version:</p>
+                            <p id="version-number">1.0.1</p>
+                        </div>
                         <img class="logo" src="images/logo.png" alt="ADHD Tools Logo">
                         <h1 class="title">ADHD Tools</h1>
                         <div class="points">
@@ -30,7 +44,73 @@
                             <button type="button" class="nav-button" id="nav-button-options">Options</button>
                         </div>
                     </div>
-                    <div id="content"></div>
+                    <div id="content">
+                        <div id="tasks-page-wrapper">
+                            <div class="tasks-page">
+                                <div class="tasks-header">
+                                    <div class="add-task-wrapper"></div>
+                                    <h1 class="tasks-title">Tasks</h1>
+                                    <div class="add-task-wrapper">
+                                        <button type="button" class="add-task-button" id="add-task-button">+</button>
+                                    </div>
+                                </div>
+                                <div id="task-list-active"><h4>You don't have any active tasks yet.</h4></div>
+                                <div class="tasks-header-completed">
+                                    <h1 class="tasks-title-completed">Completed Tasks</h1>
+                                </div>
+                                <div id="task-list-completed"><h4>You don't have any completed tasks yet.</h4></div>
+                            </div>
+                        </div>
+                        <div id="budget-page-wrapper" style="display: none;">
+                            <div class="budget-page">
+                                <div class="budget-header">
+                                    <h1 class="budget-title">Budget</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="focus-page-wrapper" style="display: none;">
+                            <div class="focus-page">
+                                <div class="focus-header">
+                                    <h1 class="focus-title">Focus</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="social-page-wrapper" style="display: none;">
+                            <div class="social-page">
+                                <div class="social-header">
+                                    <h1 class="social-title">Social</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="blog-page-wrapper" style="display: none;">
+                            <div class="blog-page">
+                                <div class="blog-header">
+                                    <h1 class="blog-title">Blog</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="donate-page-wrapper" style="display: none;">
+                            <div class="donate-page">
+                                <div class="donate-header">
+                                    <h1 class="donate-title">Donate</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="help-page-wrapper" style="display: none;">
+                            <div class="help-page">
+                                <div class="help-header">
+                                    <h1 class="help-title">Help</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="options-page-wrapper" style="display: none;">
+                            <div class="options-page">
+                                <div class="options-header">
+                                    <h1 class="options-title">Options</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

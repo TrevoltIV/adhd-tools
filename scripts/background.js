@@ -26,3 +26,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return true;
     }
 });
+
+// Respond to Get Active Task List request from tasks.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === 'get_active_task_list') {
+    chrome.storage.local.get('active_task_list', data => {
+      sendResponse(data);
+    });
+    return true;
+  }
+});
+
+// Respond to Get Completed Task List request from tasks.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message === 'get_completed_task_list') {
+    chrome.storage.local.get('completed_task_list', data => {
+      sendResponse(data);
+    });
+    return true;
+  }
+});

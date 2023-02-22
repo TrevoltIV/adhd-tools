@@ -54,11 +54,37 @@
                                         <button type="button" class="add-task-button" id="add-task-button">+</button>
                                     </div>
                                 </div>
-                                <div id="task-list-active"><h4>You don't have any active tasks yet.</h4></div>
+                                <div class="add-task-modal" id="add-task-modal">
+                                    <div class="add-task-modal-content-collapsed" id="add-task-modal-content">
+                                        <div class="add-task-modal-header">
+                                            <div class="filler"></div>
+                                            <h1 class="add-task-modal-title">Add Task</h1>
+                                            <button type="button" class="add-task-modal-close-button" id="add-task-modal-close-button">X</button>
+                                        </div>
+                                        <div class="add-task-modal-body">
+                                            <div class="add-task-modal-input-wrapper">
+                                                <input class="add-task-modal-input" id="add-task-modal-input" type="text" placeholder="Enter task name...">
+                                            </div>
+                                            <div class="add-task-modal-input-wrapper">
+                                                <textarea class="add-task-modal-textarea" id="add-task-modal-textarea" placeholder="Enter task description..."></textarea>
+                                            </div>
+                                            <div class="add-task-modal-input-wrapper">
+                                                <input class="add-task-modal-input" id="add-task-modal-input" type="text" placeholder="Enter task points...">
+                                            </div>
+                                            <div class="add-task-modal-input-wrapper">
+                                                <input class="add-task-modal-input" id="add-task-modal-input" type="text" placeholder="Enter task due date...">
+                                            </div>
+                                        </div>
+                                        <div class="add-task-modal-footer">
+                                            <button type="button" class="add-task-modal-button" id="add-task-modal-button">Add Task</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="task-list-active"></div>
                                 <div class="tasks-header-completed">
                                     <h1 class="tasks-title-completed">Completed Tasks</h1>
                                 </div>
-                                <div id="task-list-completed"><h4>You don't have any completed tasks yet.</h4></div>
+                                <div id="task-list-completed"></div>
                             </div>
                         </div>
                         <div id="budget-page-wrapper" style="display: none;">

@@ -3,22 +3,41 @@
 // Task page
 function tasks() {
 
-    chrome.runtime.sendMessage('get_active_task_list', (activeTaskList) => {
-        if (activeTaskList.length !== 0) {
-            //  Add task map here
+    // Display active tasks
+    chrome.runtime.sendMessage('get_active_task_list', (data) => {
+        if (data.active_task_list.length !== 0) {
+            const taskListRoot = document.getElementById('task-list-active');
+
+            data.active_task_list.map((task) => {
+                const taskItem = document.createElement('div', { class: 'task-item' });
+                taskItem.appendChild(document.createElement('p', { class: 'task-text' })).appendChild(document.createTextNode(task.title));
+                taskItem.appendChild(document.createElement('button', { class: 'task-delete' })).appendChild(document.createTextNode('Delete'));
+                taskItem.appendChild(document.createElement('button', { class: 'task-complete' })).appendChild(document.createTextNode('Complete'));
+                taskListRoot.appendChild(taskItem);
+            });
         } else {
-            const taskListRoot = document.getElementById('task-list');
+            const taskListRoot = document.getElementById('task-list-active');
         }
     });
 
-    chrome.runtime.sendMessage('get_completed_task_list', (completedTaskList) => {
-        if (completedTaskList.length !== 0) {
-            //  Add task map here
+    // Display completed tasks
+    chrome.runtime.sendMessage('get_completed_task_list', (data) => {
+        if (data.completed_task_list.length !== 0) {
+            const taskListRoot = document.getElementById('task-list-completed');
+
+            data.completed_task_list.map((task) => {
+                const taskItem = document.createElement('div', { class: 'task-item' });
+                taskItem.appendChild(document.createElement('p', { class: 'task-text' })).appendChild(document.createTextNode(task.title));
+                taskItem.appendChild(document.createElement('button', { class: 'task-delete' })).appendChild(document.createTextNode('Delete'));
+                taskItem.appendChild(document.createElement('button', { class: 'task-complete' })).appendChild(document.createTextNode('Complete'));
+                taskListRoot.appendChild(taskItem);
+            });
         } else {
-            const taskListRoot = document.getElementById('task-list');
+            const taskListRoot = document.getElementById('task-list-completed');
         }
     });
 
+    // Render task page and hide all other pages
     const tasksRoot = document.getElementById('tasks-page-wrapper');
     const budgetRoot = document.getElementById('budget-page-wrapper');
     const focusRoot = document.getElementById('focus-page-wrapper');
@@ -43,3 +62,6 @@ function tasks() {
 
 
 export default tasks;
+
+
+// TODO: Fix infinite task re-rendering upon switching pages (elements not being removed)

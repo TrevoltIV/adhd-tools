@@ -102,7 +102,10 @@
 }
 
 
-/* Tasks Page */
+/*
+********  Tasks Page  ********
+*/
+
 
 #tasks-page-wrapper {
     width: 100%;
@@ -116,9 +119,11 @@
 .tasks-page {
     background: rgb(240, 239, 239);
     width: 98%;
-    min-height: 444px;
+    height: 444px;
 
     border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .tasks-header {
@@ -197,3 +202,139 @@
     color: red;
 }
 
+/* Add Task Modal */
+
+.add-task-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-modal-content {
+    background: rgb(252, 150, 35);
+    width: 100%;
+    height: 300px;
+
+    border-top: solid 3px rgb(28, 32, 223);
+    border-bottom: solid 3px rgb(28, 32, 223);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.2s ease;
+}
+
+.add-task-modal-header {
+    margin-top: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-modal-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.add-task-modal-close-button {
+    background: rgb(255, 42, 42);
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+
+    color: #fff;
+    cursor: pointer;
+
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+.add-task-modal-close-button:hover {
+    background: rgb(218, 20, 20);
+}
+
+.add-task-modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-modal-input-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.add-task-modal-input {
+    margin-bottom: 10px;
+    width: 275px;
+    height: 30px;
+
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+.add-task-modal-textarea {
+    margin-bottom: 10px;
+    width: 275px;
+    height: 100px;
+
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    resize: none;
+}
+
+.add-task-modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-modal-button {
+    background:rgb(24, 86, 255);
+    margin-bottom: 6px;
+    width: 100px;
+    height: 30px;
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    color: #fff;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+.add-task-modal-button:hover {
+    background:rgb(24, 86, 200);
+}
+
+.filler {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.add-task-modal-content-collapsed {
+    background: rgb(252, 150, 35);
+    width: 100%;
+    height: 0px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.2s ease;
+}

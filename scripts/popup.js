@@ -11,6 +11,8 @@ import options from './pages/options.js';
 /*
 ********  Service worker requests  ********
 */
+
+
 const content = document.querySelector('.content');
 
 // Retrieve current URL response from background.js
@@ -24,6 +26,7 @@ chrome.runtime.sendMessage('get_url', (currentURL) => {
 /*
 ********  Pagination  ********
 */
+
 
 const tasksButton = document.getElementById('nav-button-tasks');
 const budgetButton = document.getElementById('nav-button-budget');
@@ -42,3 +45,26 @@ blogButton.addEventListener('click', () => blog());
 donateButton.addEventListener('click', () => donate());
 helpButton.addEventListener('click', () => help());
 optionsButton.addEventListener('click', () => options());
+
+
+/*
+********  Task page  ********
+*/
+
+
+const addTaskButton = document.getElementById('add-task-button');
+const addTaskModalCloseButton = document.getElementById('add-task-modal-close-button');
+const addTaskModal = document.getElementById('add-task-modal');
+const addTaskModalContent = document.getElementById('add-task-modal-content');
+
+// Open add task modal
+addTaskButton.addEventListener('click', () => {
+  addTaskModalContent.classList.add('add-task-modal-content');
+  addTaskModalContent.classList.remove('add-task-modal-content-collapsed');
+});
+
+// Close add task modal
+addTaskModalCloseButton.addEventListener('click', () => {
+  addTaskModalContent.classList.add('add-task-modal-content-collapsed');
+  addTaskModalContent.classList.remove('add-task-modal-content');
+});

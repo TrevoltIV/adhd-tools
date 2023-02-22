@@ -27,6 +27,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
+
+chrome.storage.local.set({active_task_list: [{title: 'active', description: 'test', points: 5, date: 'test'}, {title: 'active2', description: 'test', points: 5, date: 'test'}, {title: 'active3', description: 'test', points: 5, date: 'test'}]});
+chrome.storage.local.set({completed_task_list: [{title: 'complete', description: 'test', points: 5, date: 'test'}, {title: 'complete2', description: 'test', points: 5, date: 'test'}, {title: 'complete3', description: 'test', points: 5, date: 'test'}]});
+
 // Respond to Get Active Task List request from tasks.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === 'get_active_task_list') {

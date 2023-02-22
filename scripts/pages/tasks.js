@@ -9,11 +9,12 @@ function tasks() {
             const taskListRoot = document.getElementById('task-list-active');
 
             data.active_task_list.map((task) => {
-                const taskItem = document.createElement('div', { class: 'task-item' });
-                taskItem.appendChild(document.createElement('p', { class: 'task-text' })).appendChild(document.createTextNode(task.title));
-                taskItem.appendChild(document.createElement('button', { class: 'task-delete' })).appendChild(document.createTextNode('Delete'));
-                taskItem.appendChild(document.createElement('button', { class: 'task-complete' })).appendChild(document.createTextNode('Complete'));
+                const taskItem = document.createElement('div');
+                const title = taskItem.appendChild(document.createElement('p')).appendChild(document.createTextNode(task.title));
+                const deleteBtn = taskItem.appendChild(document.createElement('button')).appendChild(document.createTextNode('Delete'));
+                const completeBtn = taskItem.appendChild(document.createElement('button')).appendChild(document.createTextNode('Complete'));
                 taskListRoot.appendChild(taskItem);
+                taskItem.classList.add('task-item');
             });
         } else {
             const taskListRoot = document.getElementById('task-list-active');

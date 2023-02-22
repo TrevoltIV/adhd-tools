@@ -338,3 +338,28 @@
 
     transition: all 0.2s ease;
 }
+
+/* Task Item */
+
+.task-item {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-item p {
+    margin: 0 10px 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.task-item:first-child {
+
+}
+
+.task-item:last-child {
+    
+}

@@ -65,3 +65,4 @@ export default tasks;
 
 
 // TODO: Fix infinite task re-rendering upon switching pages (elements not being removed)
+// TODO: Fix task render on extension load (task list not being rendered on load because the function doesn't run)

@@ -74,3 +74,30 @@ addTaskModalCloseButton.addEventListener('click', () => {
   addTaskModalContent.classList.add('add-task-modal-content-collapsed');
   addTaskModalContent.classList.remove('add-task-modal-content');
 });
+
+// Add task to storage
+const addTask = () => {
+  const taskName = document.getElementById('add-task-name').value;
+  const taskDescription = document.getElementById('add-task-description').value;
+  const taskDate = document.getElementById('add-task-date').value;
+  const taskPriority = document.getElementById('add-task-priority').value;
+  const taskHours = document.getElementById('add-task-hours').value;
+  const task = {
+    title: taskName,
+    description: taskDescription,
+    priority: taskPriority,
+    date: taskDate,
+    hours: taskHours,
+  }
+  chrome.runtime.sendMessage({type: 'add_task', data: task}, (response) => {
+    if (response === 'success') {
+      tasks();
+      alert('test');
+    } else {
+      // Insert error handling here
+    }
+  });
+}
+
+const addTaskSubmitButton = document.getElementById('add-task-submit-button');
+addTaskSubmitButton.addEventListener('click', () => addTask());

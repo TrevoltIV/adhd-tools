@@ -27,10 +27,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
-
-chrome.storage.local.set({active_task_list: [{title: 'active', description: 'test', points: 5, date: 'test'}, {title: 'active2', description: 'test', points: 5, date: 'test'}, {title: 'active3', description: 'test', points: 5, date: 'test'}]});
-chrome.storage.local.set({completed_task_list: [{title: 'complete', description: 'test', points: 5, date: 'test'}, {title: 'complete2', description: 'test', points: 5, date: 'test'}, {title: 'complete3', description: 'test', points: 5, date: 'test'}]});
-
 // Respond to Get Active Task List request from tasks.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === 'get_active_task_list') {
@@ -41,12 +37,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-// Respond to Get Completed Task List request from tasks.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  // Respond to Get Completed Task List request from tasks.js
   if (message === 'get_completed_task_list') {
     chrome.storage.local.get('completed_task_list', data => {
       sendResponse(data);
     });
     return true;
+    // Handle add task request from popup.js
+  } else if (message.type === 'add_task') {
+      chrome.storage.local.get('active_task_list', data => {
+      data.active_task_list.push(message.data);
+      chrome.storage.local.set({active_task_list: data.active_task_list});
+      sendResponse('success');
+    });
   }
 });
+
+
+// TODO: Fix the error for response timeout on add task message listener

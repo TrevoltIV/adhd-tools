@@ -28,6 +28,11 @@ chrome.runtime.sendMessage('get_url', (currentURL) => {
 */
 
 
+// Open task page on extension load by default
+const openTasksOnLoad = () => {
+  tasks();
+}
+
 const tasksButton = document.getElementById('nav-button-tasks');
 const budgetButton = document.getElementById('nav-button-budget');
 const focusButton = document.getElementById('nav-button-focus');
@@ -37,6 +42,7 @@ const donateButton = document.getElementById('nav-button-donate');
 const helpButton = document.getElementById('nav-button-help');
 const optionsButton = document.getElementById('nav-button-options');
 
+document.addEventListener("DOMContentLoaded", openTasksOnLoad());
 tasksButton.addEventListener('click', () => tasks());
 budgetButton.addEventListener('click', () => budget());
 focusButton.addEventListener('click', () => focus());

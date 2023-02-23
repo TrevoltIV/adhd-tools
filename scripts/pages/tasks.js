@@ -2,41 +2,54 @@
 
 // Task page
 function tasks() {
+  // Remove previous task items if user clicks the task tab while still on the same page for some unknown ADHD reason :D
+  const taskListActive = document.getElementById('task-list-active');
+  const taskListCompleted = document.getElementById('task-list-completed');
+  taskListActive.innerHTML = "";
+  taskListCompleted.innerHTML = "";
 
     // Display active tasks
-    chrome.runtime.sendMessage('get_active_task_list', (data) => {
+    function createTaskItem(task) {
+      // Create task items from local storage request and append to task list, if none exist, display message
+      const taskItem = document.createElement('div');
+      const title = taskItem.appendChild(document.createElement('p'));
+      title.classList.add('task-title');
+      title.appendChild(document.createTextNode(task.title));
+      const btnWrapper = taskItem.appendChild(document.createElement('div'));
+      btnWrapper.classList.add('task-btn-wrapper');
+      const deleteBtn = btnWrapper.appendChild(document.createElement('button'));
+      deleteBtn.classList.add('task-delete');
+      deleteBtn.appendChild(document.createTextNode('Delete'));
+      const completeBtn = btnWrapper.appendChild(document.createElement('button'));
+      completeBtn.classList.add('task-complete');
+      completeBtn.appendChild(document.createTextNode('Complete'));
+      taskItem.classList.add('task-item');
+      return taskItem;
+    }
+      
+      // Display active tasks
+      chrome.runtime.sendMessage('get_active_task_list', (data) => {
+        const taskListRoot = document.getElementById('task-list-active');
         if (data.active_task_list.length !== 0) {
-            const taskListRoot = document.getElementById('task-list-active');
-
-            data.active_task_list.map((task) => {
-                const taskItem = document.createElement('div');
-                const title = taskItem.appendChild(document.createElement('p')).appendChild(document.createTextNode(task.title));
-                const deleteBtn = taskItem.appendChild(document.createElement('button')).appendChild(document.createTextNode('Delete'));
-                const completeBtn = taskItem.appendChild(document.createElement('button')).appendChild(document.createTextNode('Complete'));
-                taskListRoot.appendChild(taskItem);
-                taskItem.classList.add('task-item');
-            });
+          data.active_task_list.forEach((task) => {
+            const taskItem = createTaskItem(task);
+            taskListRoot.appendChild(taskItem);
+          });
         } else {
-            const taskListRoot = document.getElementById('task-list-active');
+          
         }
-    });
-
-    // Display completed tasks
-    chrome.runtime.sendMessage('get_completed_task_list', (data) => {
+      });
+      
+      // Display completed tasks
+      chrome.runtime.sendMessage('get_completed_task_list', (data) => {
+        const taskListRoot = document.getElementById('task-list-completed');
         if (data.completed_task_list.length !== 0) {
-            const taskListRoot = document.getElementById('task-list-completed');
-
-            data.completed_task_list.map((task) => {
-                const taskItem = document.createElement('div', { class: 'task-item' });
-                taskItem.appendChild(document.createElement('p', { class: 'task-text' })).appendChild(document.createTextNode(task.title));
-                taskItem.appendChild(document.createElement('button', { class: 'task-delete' })).appendChild(document.createTextNode('Delete'));
-                taskItem.appendChild(document.createElement('button', { class: 'task-complete' })).appendChild(document.createTextNode('Complete'));
-                taskListRoot.appendChild(taskItem);
-            });
-        } else {
-            const taskListRoot = document.getElementById('task-list-completed');
+          data.completed_task_list.forEach((task) => {
+            const taskItem = createTaskItem(task);
+            taskListRoot.appendChild(taskItem);
+          });
         }
-    });
+      });
 
     // Render task page and hide all other pages
     const tasksRoot = document.getElementById('tasks-page-wrapper');
@@ -63,7 +76,3 @@ function tasks() {
 
 
 export default tasks;
-
-
-// TODO: Fix infinite task re-rendering upon switching pages (elements not being removed)
-// TODO: Fix task render on extension load (task list not being rendered on load because the function doesn't run)

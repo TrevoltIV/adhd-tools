@@ -19,6 +19,12 @@ function options() {
     helpRoot.style.display = 'none';
     donateRoot.style.display = 'none';
     optionsRoot.style.display = 'flex';
+
+    const taskListActive = document.getElementById('task-list-active');
+    const taskListCompleted = document.getElementById('task-list-completed');
+
+    taskListActive.innerHTML = "";
+    taskListCompleted.innerHTML = "";
 }
 
 

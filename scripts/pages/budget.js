@@ -19,6 +19,12 @@ function budget() {
     helpRoot.style.display = 'none';
     optionsRoot.style.display = 'none';
     budgetRoot.style.display = 'flex';
+
+    const taskListActive = document.getElementById('task-list-active');
+    const taskListCompleted = document.getElementById('task-list-completed');
+
+    taskListActive.innerHTML = "";
+    taskListCompleted.innerHTML = "";
 }
 
 

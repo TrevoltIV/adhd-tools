@@ -27,7 +27,7 @@
                         <h1 class="title">ADHD Tools</h1>
                         <div class="points">
                             <p class="points-text">Points:</p>
-                            <p id="points-number">1,287</p>
+                            <p id="points-number"></p>
                         </div>
                     </div>
                     <div class="nav">
@@ -48,7 +48,16 @@
                         <div id="tasks-page-wrapper">
                             <div class="tasks-page">
                                 <div class="tasks-header">
-                                    <div class="add-task-wrapper"></div>
+                                    <div class="sort-by-wrapper">
+                                        <div class="sort-by-button-wrapper">
+                                            <p class="sort-by-text">Sort by:</p> <button class="sort-by-button" type="button" id="sort-by-button"></button>
+                                        </div>
+                                        <div class="sort-by-dropdown-collapsed" id="sort-by-dropdown">
+                                            <button type="button" class="sort-by-dropdown-button" id="sort-by-dropdown-button-1">Priority</button>
+                                            <button type="button" class="sort-by-dropdown-button" id="sort-by-dropdown-button-2">Due Date - Soonest</button>
+                                            <button type="button" class="sort-by-dropdown-button" id="sort-by-dropdown-button-3">Time Estimate</button>
+                                        </div>
+                                    </div>
                                     <h1 class="tasks-title">Tasks</h1>
                                     <div class="add-task-wrapper">
                                         <button type="button" class="add-task-button" id="add-task-button">+</button>
@@ -63,19 +72,25 @@
                                         </div>
                                         <div class="add-task-modal-body">
                                             <div class="add-task-modal-input-wrapper">
-                                                <input class="add-task-modal-input" id="add-task-name" type="text" placeholder="Enter task name...">
+                                                <input class="add-task-modal-input" id="add-task-title" type="text" placeholder="Enter task title...">
                                             </div>
                                             <div class="add-task-modal-input-wrapper">
                                                 <textarea class="add-task-modal-textarea" id="add-task-description" placeholder="Enter task description..."></textarea>
                                             </div>
                                             <div class="add-task-modal-input-wrapper">
-                                                <input class="add-task-modal-input" id="add-task-priority" type="number" placeholder="Enter priority number (higher number = higher priority)">
+                                                <select class="add-task-modal-input" id="add-task-priority">
+                                                    <option value="0">Very low</option>
+                                                    <option value="1">Low</option>
+                                                    <option value="2" selected>Medium</option>
+                                                    <option value="3">High</option>
+                                                    <option value="4">Very high</option>
+                                                </select>
                                             </div>
                                             <div class="add-task-modal-input-wrapper">
-                                                <input class="add-task-modal-input" id="add-task-hours" type="number" placeholder="Enter time estimate (hrs)...">
+                                                <input class="add-task-modal-input" id="add-task-hours" type="range" placeholder="Enter time estimate (hrs)..." min="0" max="100" value="1">
                                             </div>
                                             <div class="add-task-modal-input-wrapper">
-                                                <input class="add-task-modal-input" id="add-task-date" type="text" placeholder="Enter task due date...">
+                                                <input class="add-task-modal-input" id="add-task-date" type="date" placeholder="Enter task due date...">
                                             </div>
                                         </div>
                                         <div class="add-task-modal-footer">
@@ -90,52 +105,67 @@
                                 <div id="task-list-completed"></div>
                             </div>
                         </div>
+                        <div class="init-popup-modal-collapsed" id="init-popup-modal">
+                            <div class="init-popup-modal-content">
+                                <div class="init-popup-modal-header">
+                                    <img src="images/logo_enlarged.png" class="init-popup-modal-logo" alt="ADHD Tools Logo">
+                                    <h1 class="init-popup-modal-title">Welcome to ADHD Tools!</h1>
+                                </div>
+                                <div class="init-popup-modal-body">
+                                    <div class="init-popup-modal-footer">
+                                        <p class="terms-text">By clicking the "OK" button below, you agree to the <span class="terms-link">ADHD Tools Terms of Service</span>.</p>
+                                        <button type="button" class="init-popup-modal-button" id="init-popup-modal-button">OK</button>
+                                    </div>
+                                    <div class="circle-bg"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div id="budget-page-wrapper" style="display: none;">
                             <div class="budget-page">
                                 <div class="budget-header">
-                                    <h1 class="budget-title">Budget</h1>
+                                    <h1 class="budget-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="focus-page-wrapper" style="display: none;">
                             <div class="focus-page">
                                 <div class="focus-header">
-                                    <h1 class="focus-title">Focus</h1>
+                                    <h1 class="focus-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="social-page-wrapper" style="display: none;">
                             <div class="social-page">
                                 <div class="social-header">
-                                    <h1 class="social-title">Social</h1>
+                                    <h1 class="social-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="blog-page-wrapper" style="display: none;">
                             <div class="blog-page">
                                 <div class="blog-header">
-                                    <h1 class="blog-title">Blog</h1>
+                                    <h1 class="blog-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="donate-page-wrapper" style="display: none;">
                             <div class="donate-page">
                                 <div class="donate-header">
-                                    <h1 class="donate-title">Donate</h1>
+                                    <h1 class="donate-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="help-page-wrapper" style="display: none;">
                             <div class="help-page">
                                 <div class="help-header">
-                                    <h1 class="help-title">Help</h1>
+                                    <h1 class="help-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>
                         <div id="options-page-wrapper" style="display: none;">
                             <div class="options-page">
                                 <div class="options-header">
-                                    <h1 class="options-title">Options</h1>
+                                    <h1 class="options-title">This tab is not yet available.</h1>
                                 </div>
                             </div>
                         </div>

@@ -38,7 +38,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   } else if (message === 'get_active_task_list') {
     chrome.storage.local.get('active_task_list', data => {
-      sendResponse(data);
+      if (data) {
+        sendResponse(data);
+      } else {
+        sendResponse(false)
+      }
     });
     return true;
   } else if (message.type === 'add_task') {
@@ -111,6 +115,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       }
     });
     chrome.storage.local.set({instance_initialized: true});
+    chrome.storage.local.set({sort_by: 'priority'});
     sendResponse(true);
     return true;
   }

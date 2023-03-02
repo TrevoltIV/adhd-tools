@@ -120,7 +120,18 @@ function tasks() {
             });
           });
         } else {
+          // Create a message box and set sort button if there are no active tasks
           createEmptyTaskItem('active');
+          chrome.storage.local.get('sort_by', (data) => {
+            const sortByButton = document.getElementById('sort-by-button');
+            if (data.sort_by === 'priority') {
+              sortByButton.innerHTML = 'Priority';
+            } else if (data.sort_by === 'date') {
+              sortByButton.innerHTML = 'Date';
+            } else if (data.sort_by === 'hours') {
+              sortByButton.innerHTML = 'Time';
+            }
+          });
         }
       });
       

@@ -104,16 +104,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Instance Initialization (preparing extension for use)
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === 'initialize_instance') {
-    chrome.storage.local.get('active_task_list', data => {
-      if (data.active_task_list === undefined) {
-        chrome.storage.local.set({active_task_list: []});
-      }
-    });
-    chrome.storage.local.get('completed_task_list', data => {
-      if (data.completed_task_list === undefined) {
-        chrome.storage.local.set({completed_task_list: []});
-      }
-    });
+    chrome.storage.local.set({active_task_list: []});
+    chrome.storage.local.set({completed_task_list: []});
     chrome.storage.local.set({instance_initialized: true});
     chrome.storage.local.set({sort_by: 'priority'});
     sendResponse(true);

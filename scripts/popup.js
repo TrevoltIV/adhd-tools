@@ -8,6 +8,37 @@ import help from './pages/help.js';
 import options from './pages/options.js';
 
 
+
+
+/*
+********  Initialization Popup  ********
+*/
+
+
+// This popup appears only when the extension is first installed (unless local storage is cleared)
+chrome.storage.local.get('instance_initialized', (data) => {
+  if (!data.instance_initialized) {
+    const initPopupModal = document.getElementById('init-popup-modal');
+    initPopupModal.classList.remove('init-popup-modal-collapsed');
+    initPopupModal.classList.add('init-popup-modal');
+  }
+});
+
+// Close initialization popup and send initialize instance request
+const initPopupModalButton = document.getElementById('init-popup-modal-button');
+initPopupModalButton.addEventListener('click', () => {
+  const initPopupModal = document.getElementById('init-popup-modal');
+  initPopupModal.classList.remove('init-popup-modal');
+  initPopupModal.classList.add('init-popup-modal-collapsed');
+  chrome.runtime.sendMessage('initialize_instance', (response) => {
+    if (response) {
+      tasks();
+      return null;
+    }
+  });
+});
+
+
 /*
 ********  Service worker requests  ********
 */
@@ -38,9 +69,17 @@ chrome.storage.local.get('points', (data) => {
 */
 
 
-// Open task page on extension load by default
+// Open task page on extension load by default (only after instance is initialized)
 const openTasksOnLoad = () => {
-  tasks();
+  chrome.storage.local.get('instance_initialized', (data) => {
+    if (data.instance_initialized) {
+      chrome.storage.local.get('active_task_list', (data) => {
+        if (data.active_task_list !== undefined) {
+          tasks();
+        }
+      })
+    }
+  })
 }
 
 const tasksButton = document.getElementById('nav-button-tasks');
@@ -61,34 +100,6 @@ blogButton.addEventListener('click', () => blog());
 donateButton.addEventListener('click', () => donate());
 helpButton.addEventListener('click', () => help());
 optionsButton.addEventListener('click', () => options());
-
-
-/*
-********  Initialization Popup  ********
-*/
-
-
-// This popup appears only when the extension is first installed (unless local storage is cleared)
-chrome.storage.local.get('instance_initialized', (data) => {
-  if (!data.instance_initialized) {
-    const initPopupModal = document.getElementById('init-popup-modal');
-    initPopupModal.classList.remove('init-popup-modal-collapsed');
-    initPopupModal.classList.add('init-popup-modal');
-  }
-});
-
-// Close initialization popup and send initialize instance request
-const initPopupModalButton = document.getElementById('init-popup-modal-button');
-initPopupModalButton.addEventListener('click', () => {
-  const initPopupModal = document.getElementById('init-popup-modal');
-  initPopupModal.classList.remove('init-popup-modal');
-  initPopupModal.classList.add('init-popup-modal-collapsed');
-  chrome.runtime.sendMessage('initialize_instance', (response) => {
-    if (response) {
-      return null;
-    }
-  });
-});
 
 
 /*

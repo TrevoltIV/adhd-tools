@@ -38,6 +38,42 @@ initPopupModalButton.addEventListener('click', () => {
   });
 });
 
+// Terms of Service Popup
+const termsOfServiceButton = document.getElementById('terms-link');
+const termsOfServiceModal = document.getElementById('terms-modal');
+const termsOfServiceModalCloseButton = document.getElementById('terms-back-button');
+
+termsOfServiceButton.addEventListener('click', () => {
+  termsOfServiceModal.classList.remove('terms-modal-collapsed');
+  termsOfServiceModal.classList.add('terms-modal');
+});
+
+termsOfServiceModalCloseButton.addEventListener('click', () => {
+  termsOfServiceModal.classList.remove('terms-modal');
+  termsOfServiceModal.classList.add('terms-modal-collapsed');
+});
+
+// Privacy Policy Popup
+const privacyPolicyButton = document.getElementById('privacy-link');
+const privacyPolicyButton2 = document.getElementById('privacy-link-2');
+const privacyPolicyModal = document.getElementById('privacy-modal');
+const privacyPolicyBackButton = document.getElementById('privacy-back-button');
+
+privacyPolicyButton.addEventListener('click', () => {
+  privacyPolicyModal.classList.remove('privacy-modal-collapsed');
+  privacyPolicyModal.classList.add('privacy-modal');
+});
+
+privacyPolicyBackButton.addEventListener('click', () => {
+  privacyPolicyModal.classList.remove('privacy-modal');
+  privacyPolicyModal.classList.add('privacy-modal-collapsed');
+});
+
+privacyPolicyButton2.addEventListener('click', () => {
+  privacyPolicyModal.classList.remove('privacy-modal-collapsed');
+  privacyPolicyModal.classList.add('privacy-modal');
+});
+
 
 /*
 ********  Service worker requests  ********
